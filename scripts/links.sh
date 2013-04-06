@@ -33,7 +33,7 @@ then
 
     if [[ $SURE = "Y" || $SURE = "y" || $SURE = "" ]]; 
     then
-        rm ~/.emacs.d
+        rm -rf ~/.emacs.d
     fi
 fi
 

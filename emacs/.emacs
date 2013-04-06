@@ -298,20 +298,20 @@ G-C-\\: Split Window
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))
 
-;; Emacs jabber support
-;; adjust this path:
-;(add-to-list 'load-path "/path/to/emacs-jabber")
-;; For 0.7.1 and below:
-(require 'jabber)
-;; For 0.7.90 and above:
-(require 'jabber-autoloads)
-
-;; Jabber / Google Talk Setup
-(setq jabber-username "kevin.demarco" ;; notice: leave off the @gmail.com
-      jabber-server "gmail.com"     ;; this is a part of your user ID, not a part of the server you will connect to.
-      jabber-network-server "talk.google.com"  ;; this is the actual server to connect to
-      jabber-port 5223
-      jabber-connection-type 'ssl)
+;;;; Emacs jabber support
+;;;; adjust this path:
+;;;(add-to-list 'load-path "/path/to/emacs-jabber")
+;;;; For 0.7.1 and below:
+;;(require 'jabber)
+;;;; For 0.7.90 and above:
+;;(require 'jabber-autoloads)
+;;
+;;;; Jabber / Google Talk Setup
+;;(setq jabber-username "kevin.demarco" ;; notice: leave off the @gmail.com
+;;      jabber-server "gmail.com"     ;; this is a part of your user ID, not a part of the server you will connect to.
+;;      jabber-network-server "talk.google.com"  ;; this is the actual server to connect to
+;;      jabber-port 5223
+;;      jabber-connection-type 'ssl)
 
 
 ;; Matlab-emacs setup
