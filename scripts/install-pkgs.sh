@@ -25,6 +25,7 @@ echo "Detecting Linux operating system variant."
 DEPS_COMMON=(
 cmake 
 emacs
+cscope
 )
 
 # Dependencies only for RedHat, CentOS, etc.
