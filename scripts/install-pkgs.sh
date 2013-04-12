@@ -26,13 +26,18 @@ DEPS_COMMON=(
 cmake 
 emacs
 cscope
+wmctrl
 )
 
 # Dependencies only for RedHat, CentOS, etc.
 DEPS_RPM=()
 
 # Dependencies only for Ubuntu
-DEPS_DPKG=(build-essential)
+DEPS_DPKG=(
+build-essential
+texlive-full
+texmaker
+)
 
 # Dependencies only for ArchLinux
 DEPS_PACMAN=()

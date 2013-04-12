@@ -171,27 +171,9 @@ G-C-\\: Split Window
 ;In windows, the site-lisp direction should be
 ;in the emacs-23.3/ directory, i.e. same level
 ; as /bin
-(add-to-list 'load-path "~/.emacs.d/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/")
 
 (setq inhibit-splash-screen t)
-
-;(require 'reftex)
-;(setq-default TeX-master nil)
-;(add-hook 'LaTeX-mode-hook 'TeX-PDF-mode) ;turn on pdf-mode.  AUCTeX
-                                          ;will call pdflatex to
-                                          ;compile instead of latex.
-;(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode) ;turn on math-mode by
-                                             ;default
-;(add-hook 'LaTeX-mode-hook 'reftex-mode) ;turn on REFTeX mode by
-                                         ;default
-;(add-hook 'LaTeX-mode-hook 'flyspell-mode) ;turn on flyspell mode by
-                                           ;default
-
-;(setq reftex-plug-into-AUCTeX t)
-;(setq TeX-auto-save t)
-;(setq TeX-save-query nil)
-;(setq TeX-parse-self t)
-;(setq-default TeX-master nil)
 
 (require 'template)
 (template-initialize)
@@ -318,8 +300,81 @@ G-C-\\: Split Window
 (add-to-list 'load-path "~/.emacs.d/site-lisp/matlab-emacs")
 (load-library "matlab-load")
 
-; Latex Setup
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq TeX-save-query nil)
-;(setq TeX-PDF-mode t)
+;;;;===========================================
+;;;; Latex Setup
+;;;;===========================================
+;;;;; Basic commands for using Auctex
+;;;;;(add-to-list 'load-path "~/.emacs.d/site-lisp/predictive")
+;;;;;(require 'predictive)
+;;;;; predictive
+;;;;; predictive install location
+;;;(add-to-list `load-path "~/.emacs.d/site-lisp/predictive/")
+;;;;; dictionary locations
+;;;(add-to-list `load-path "~/.emacs.d/site-lisp/predictive/latex/")
+;;;(add-to-list `load-path "~/.emacs.d/site-lisp/predictive/texinfo/")
+;;;(add-to-list `load-path "~/.emacs.d/site-lisp/predictive/html/")
+;;;;; load predictive package
+;;;(require 'predictive)
+;;;(autoload 'predictive-mode "~/.emacs.d/site-lisp/predictive/predictive"
+;;;  "Turn on Predictive Completion Mode." t)
+;;;
+;;;
+;;;;(setq latex-run-command "pdflatex")
+;;;(setq TeX-auto-save t)
+;;;(setq TeX-parse-self t)
+;;;(setq TeX-save-query nil)
+;;;;(setq TeX-PDF-mode t)
+;;;
+;;;(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+;;;(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+;;;(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+;;;
+;;;;; Add spell checking
+;;;(setq ispell-program-name "aspell") ; could be ispell as well, depending on your preferences
+;;;(setq ispell-dictionary "english") ; this can obviously be set to any language your spell-checking program supports
+;;;(add-hook 'LaTeX-mode-hook 'flyspell-buffer)
+;;;
+;;;;; Add Table of Contents (C-c =)
+;;;(require 'tex-site)
+;;;(autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
+;;;(autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" nil)
+;;;(autoload 'reftex-citation "reftex-cite" "Make citation" nil)
+;;;(autoload 'reftex-index-phrase-mode "reftex-index" "Phrase Mode" t)
+;;;(add-hook 'latex-mode-hook 'turn-on-reftex) ; with Emacs latex mode
+;;;;; (add-hook 'reftex-load-hook 'imenu-add-menubar-index)
+;;;(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;;;
+;;;(setq LaTeX-eqnarray-label "eq"
+;;;LaTeX-equation-label "eq"
+;;;LaTeX-figure-label "fig"
+;;;LaTeX-table-label "tab"
+;;;LaTeX-myChapter-label "chap"
+;;;TeX-auto-save t
+;;;TeX-newline-function 'reindent-then-newline-and-indent
+;;;TeX-parse-self t
+;;;TeX-style-path
+;;;'("style/" "auto/"
+;;;"/usr/share/emacs21/site-lisp/auctex/style/"
+;;;"/var/lib/auctex/emacs21/"
+;;;"/usr/local/share/emacs/site-lisp/auctex/style/")
+;;;LaTeX-section-hook
+;;;'(LaTeX-section-heading
+;;;LaTeX-section-title
+;;;LaTeX-section-toc
+;;;LaTeX-section-section
+;;;LaTeX-section-label))
+;;;
+;;;;;;; Set evince for pdf viewer
+;;;(setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) %o")))
+;;;(setq TeX-view-program-selection '((output-pdf "Evince")))
+;;;
+;;;;;; Add yasnippet
+;;;;;(add-to-list 'load-path "~/.emacs.d/site-lisp/yasnippet")
+;;;;;(require 'yasnippet) ;; not yasnippet-bundle
+;;;;;
+;;;;;(yas--initialize)
+;;;;;(yas/load-directory "~/.emacs.d/site-lisp/yasnippet/snippets")
+;;;;;
+;;;;;; Add auto-complete to path
+;;;;;(add-to-list 'load-path "~/.emacs.d/site-lisp/auto-complete-1.3.1/")
+;;;;;(require 'auto-complete-auctex)
