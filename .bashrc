@@ -151,3 +151,5 @@ export MORSE_BLENDER=~/apps/blender-2.66a-linux-glibc211-i686/blender
 export PYTHONPATH=/opt/morse/lib/python3.3/site-packages:${PYTHONPATH}
 
 #export PYTHONPATH=$PYTHONPATH:/opt/morse/lib/python3.3/site-packages:/usr/local/lib/python3.3:/usr/local/lib/python3.3/site-packages
+
+export QTDIR=/usr/share/qt4
