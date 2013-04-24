@@ -175,6 +175,24 @@ G-C-\\: Split Window
 
 (setq inhibit-splash-screen t)
 
+;(require 'reftex)
+;(setq-default TeX-master nil)
+;(add-hook 'LaTeX-mode-hook 'TeX-PDF-mode) ;turn on pdf-mode.  AUCTeX
+                                          ;will call pdflatex to
+                                          ;compile instead of latex.
+;(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode) ;turn on math-mode by
+                                             ;default
+;(add-hook 'LaTeX-mode-hook 'reftex-mode) ;turn on REFTeX mode by
+                                         ;default
+;(add-hook 'LaTeX-mode-hook 'flyspell-mode) ;turn on flyspell mode by
+                                           ;default
+
+;(setq reftex-plug-into-AUCTeX t)
+;(setq TeX-auto-save t)
+;(setq TeX-save-query nil)
+;(setq TeX-parse-self t)
+;(setq-default TeX-master nil)
+
 (require 'template)
 (template-initialize)
 
@@ -279,6 +297,22 @@ G-C-\\: Split Window
 
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))
+
+;;;; Emacs jabber support
+;;;; adjust this path:
+;;;(add-to-list 'load-path "/path/to/emacs-jabber")
+;;;; For 0.7.1 and below:
+;;(require 'jabber)
+;;;; For 0.7.90 and above:
+;;(require 'jabber-autoloads)
+;;
+;;;; Jabber / Google Talk Setup
+;;(setq jabber-username "kevin.demarco" ;; notice: leave off the @gmail.com
+;;      jabber-server "gmail.com"     ;; this is a part of your user ID, not a part of the server you will connect to.
+;;      jabber-network-server "talk.google.com"  ;; this is the actual server to connect to
+;;      jabber-port 5223
+;;      jabber-connection-type 'ssl)
+
 
 ;; Matlab-emacs setup
 (add-to-list 'load-path "~/.emacs.d/site-lisp/matlab-emacs")

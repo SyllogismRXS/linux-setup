@@ -58,3 +58,11 @@ fi
 
 BASHRC=$(readlink -f ../.bashrc)
 ln -s ${BASHRC} ~/.bashrc
+
+##########################################################
+# link pianobar config file to ~/.config/pianobar/config
+##########################################################
+mkdir -p ~/.config/pianobar
+
+PIANOBAR_CONFIG=$(readlink -f ../pianobar/config)
+ln -s ${PIANOBAR_CONFIG} ~/.config/pianobar/config
