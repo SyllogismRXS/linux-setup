@@ -175,24 +175,6 @@ G-C-\\: Split Window
 
 (setq inhibit-splash-screen t)
 
-;(require 'reftex)
-;(setq-default TeX-master nil)
-;(add-hook 'LaTeX-mode-hook 'TeX-PDF-mode) ;turn on pdf-mode.  AUCTeX
-                                          ;will call pdflatex to
-                                          ;compile instead of latex.
-;(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode) ;turn on math-mode by
-                                             ;default
-;(add-hook 'LaTeX-mode-hook 'reftex-mode) ;turn on REFTeX mode by
-                                         ;default
-;(add-hook 'LaTeX-mode-hook 'flyspell-mode) ;turn on flyspell mode by
-                                           ;default
-
-;(setq reftex-plug-into-AUCTeX t)
-;(setq TeX-auto-save t)
-;(setq TeX-save-query nil)
-;(setq TeX-parse-self t)
-;(setq-default TeX-master nil)
-
 (require 'template)
 (template-initialize)
 
@@ -331,9 +313,6 @@ G-C-\\: Split Window
 ;;             emacsclient -a emacs --no-wait +%l %f
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(server-start) ;; start server for okular comms
-(setq TeX-PDF-mode t) ;; use pdflatex instead of latex
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Standard emacs config (http://emacswiki.org/emacs/AUCTeX)
 (setq TeX-auto-save t)
@@ -344,9 +323,16 @@ G-C-\\: Split Window
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
+(add-hook 'LaTeX-mode-hook 'auto-fill-mode) ; enable auto-fill mode in latex
+
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
+(setq reftex-default-bibliography '("./*.bib"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; only start server for okular comms in latex mode
+(add-hook 'LaTeX-mode-hook 'server-start) ;(server-start) 
+(setq TeX-PDF-mode t) ;; use pdflatex instead of latex
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Enable synctex correlation
