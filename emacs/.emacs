@@ -351,3 +351,18 @@ G-C-\\: Split Window
 (setq TeX-view-program-list
       '(("PDF Viewer" "okular --unique %o#src:%n%b")))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Org Mode
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+
+(setq org-log-done 'time)
+
+(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("school" . ?s) ("music" . ?m)))
+
+(setq org-agenda-files (list "~/ownCloud/clientsync/org/work.org"
+                             "~/ownCloud/clientsync/org/school.org" 
+                             "~/ownCloud/clientsync/org/home.org"
+                             "~/ownCloud/clientsync/org/blooky.org"
+                             "~/ownCloud/clientsync/org/music.org"))
