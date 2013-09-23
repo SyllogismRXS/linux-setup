@@ -353,6 +353,7 @@ G-C-\\: Split Window
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Org Mode
+(require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
@@ -361,8 +362,23 @@ G-C-\\: Split Window
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("school" . ?s) ("music" . ?m)))
 
-(setq org-agenda-files (list "~/ownCloud/clientsync/org/work.org"
-                             "~/ownCloud/clientsync/org/school.org" 
-                             "~/ownCloud/clientsync/org/home.org"
-                             "~/ownCloud/clientsync/org/blooky.org"
-                             "~/ownCloud/clientsync/org/music.org"))
+(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org"))
+
+;(setq org-agenda-files (list "~/Dropbox/org/personal.org" 
+;                             "~/Dropbox/org/gtri.org"
+;                             "~/Dropbox/org/thesis.org"
+;                             "~/Dropbox/org/blooky.org"
+;                             "~/Dropbox/org/ideas.org"
+;                             "~/Dropbox/org/gtd.org"
+;                             ))
+
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/Dropbox/org")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/Dropbox/org/flagged.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+
+(setq org-todo-keywords
+      '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED" "DEFERRED")))
+
