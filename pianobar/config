@@ -4,7 +4,7 @@
 #
 # User
 user = kevin.demarco@gmail.com
-password = password
+password = charlie43
 # or
 #password_command = gpg --decrypt ~/password
 

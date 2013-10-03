@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+echo $# 
+
+if [ $# -lt 1 ] 
+then 
+  echo "usage: $0 movieFileName" 
+  exit
+fi 
+
+# -r rate in HZ 
+# -b bandwidth which controls quality. 
+
+ffmpeg -r 10 -b 4000 -i '%07d.jpg' $1

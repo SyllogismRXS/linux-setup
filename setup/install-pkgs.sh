@@ -25,7 +25,7 @@ echo "Detecting Linux operating system variant."
 DEPS_COMMON=(
 cmake 
 emacs
-cscope
+#cscope
 wmctrl
 )
 
@@ -35,8 +35,8 @@ DEPS_RPM=()
 # Dependencies only for Ubuntu
 DEPS_DPKG=(
 build-essential
-texlive-full
-texmaker
+#texlive-full
+#texmaker
 )
 
 # Dependencies only for ArchLinux

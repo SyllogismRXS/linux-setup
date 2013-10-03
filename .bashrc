@@ -115,13 +115,16 @@ fi
 #
 # MOOS Setup
 #
-source ~/git-repos/yellowfin2_0/uuv-main/setup.sh
-export PATH=${PATH}:~/git-repos/syllo-moos/bin
+#source ~/git-repos/yellowfin2_0/uuv-main/setup.sh
+export PATH=${PATH}:~/repos/3rd-party/moos-ivp/bin
+
 
 #
 # JTS Setup
 #
-export JTS_COMMON_PATH=~/builds/jaustoolset-2.2.1/GUI/templates/Common
+export JTS_COMMON_PATH=~/repos/3rd-party/jaustoolset-read-only/GUI/templates/component
+
+
 
 #
 # SMC Setup
@@ -134,22 +137,41 @@ alias e='emacs -nw'
 #
 # SAM / AVIA Setup
 #
-source /home/syllogismrxs/svn-repos/AVIA/trunk/cmake-proj/avia/sam/setenv.sh
-source /home/syllogismrxs/svn-repos/AVIA/trunk/cmake-proj/avia/avia-app/setenv.sh
+#source /home/syllogismrxs/svn-repos/AVIA/trunk/cmake-proj/avia/sam/setenv.sh
+#source /home/syllogismrxs/svn-repos/AVIA/trunk/cmake-proj/avia/avia-app/setenv.sh
 
 #
 # ROS Setup
 #
 source /opt/ros/groovy/setup.bash
 
+CATKIN_WS1_SETUP=~/repos/syllo-ros/catkin_ws/devel/setup.sh         
+if [ -f ${CATKIN_WS1_SETUP} ]; then
+source ${CATKIN_WS1_SETUP}
+fi 
+
+# Add Blender to Path
+export PATH=${PATH}:~/apps/blender-2.68a-linux-glibc211-x86_64
+
 #
 # MORSE Setup
 #
-export MORSE_ROOT=/opt/morse
-export PATH=/opt/morse/bin:${PATH}
-export MORSE_BLENDER=~/apps/blender-2.66a-linux-glibc211-i686/blender
-export PYTHONPATH=/opt/morse/lib/python3.3/site-packages:${PYTHONPATH}
+#-----------------------------------------------------
+MORSE_ENV_VARS=/home/syllogismrxs/repos/syllo-morse/setenv.sh
+if [ -f ${MORSE_ENV_VARS} ]; then
+source ${MORSE_ENV_VARS}
+fi
+#-----------------------------------------------------
 
-#export PYTHONPATH=$PYTHONPATH:/opt/morse/lib/python3.3/site-packages:/usr/local/lib/python3.3:/usr/local/lib/python3.3/site-packages
+export QT_PLUGIN_PATH=/usr/local/qwt-6.1.0/plugins
 
-export QTDIR=/usr/share/qt4
+#
+# Stage Setup
+#
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64
+export STAGEPATH=/usr/local/lib64
+
+#
+# Add user script directory to path
+#
+export PATH=${PATH}:~/repos/linux-setup/scripts
