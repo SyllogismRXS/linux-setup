@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Start emacs server
+emacs --daemon
+
+# Create the ics file
+emacsclient -e "(save-excursion (org-mycal-export))"
+
+# Move the ics file to the web server
+mv /home/syllogismrxs/org.ics /var/www/calendars/emacs.ics
+
+# Kill all the emacs processes (needs fix)
+killall emacs
