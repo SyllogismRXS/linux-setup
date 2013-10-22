@@ -1,5 +1,9 @@
 #!/bin/bash
 
+PATH=${PATH}:/home/syllogismrxs/git-repos/linux-setup/scripts
+
+pushd /home/syllogismrxs >& /dev/null
+
 CALENDAR_DIR=~/Dropbox/org/calendars
 
 # Process Kevin Calendar
@@ -35,3 +39,5 @@ ical2org < ${ACADEMICS_FILE} > ${ACADEMICS_ORG}
 
 # Clean up
 rm academics.ics
+
+popd >& /dev/null

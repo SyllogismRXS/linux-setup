@@ -1,0 +1,8 @@
+#!/usr/bin/emacs --script
+
+(load-file "/home/syllogismrxs/.emacs")
+
+(org-mycal-export)
+
+
+

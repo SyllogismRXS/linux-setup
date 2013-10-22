@@ -423,10 +423,19 @@ G-C-\\: Split Window
 
 ;;; activate filter and call export function
 (defun org-mycal-export ()
+  "Exports Org Agenda to Google Calendar"
+  (interactive)
   (let ((org-icalendar-verify-function 'org-mycal-export-limit))
-    (org-export-icalendar-combine-agenda-files)))
+    (org-export-icalendar-combine-agenda-files))
+  (+ 1 2))
 
 (setq org-icalendar-store-UID t)
 ;(setq org-icalendar-include-todo t)
 (setq org-icalendar-use-scheduled '(event-if-not-todo todo-due))
 (setq org-icalendar-use-deadline '(event-if-not-todo todo-due))
+
+; Debug / test functions
+(defun doodlebug ()
+ "Nonce function"
+ (interactive)
+ (message "Howdie-doodie fella"))
