@@ -376,13 +376,13 @@ G-C-\\: Split Window
                              "~/Dropbox/org/personal.org"
                              "~/Dropbox/org/thesis.org"
                              "~/Dropbox/org/values.org"
-                             "~/Dropbox/org/calendars/academics-calendar.org"
-                             "~/Dropbox/org/calendars/kevin-calendar.org"
-                             "~/Dropbox/org/calendars/gtri-calendar.org"
+                             "~/Dropbox/org/academics-calendar.org"
+                             "~/Dropbox/org/kevin-calendar.org"
+                             "~/Dropbox/org/gtri-calendar.org"
                              ))
 
 ;; Set to the location of your Org files on your local system
-;(setq org-directory "~/Dropbox/org")
+(setq org-directory "~/Dropbox/org")
 ;; Set to the name of the file where new notes will be stored
 
 (setq org-mobile-inbox-for-pull "~/Dropbox/org/flagged.org")
