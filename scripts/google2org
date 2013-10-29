@@ -4,6 +4,7 @@ PATH=${PATH}:/home/syllogismrxs/git-repos/linux-setup/scripts
 
 pushd /home/syllogismrxs >& /dev/null
 
+#CALENDAR_DIR=~/Dropbox/org/calendars
 CALENDAR_DIR=~/Dropbox/org/calendars
 
 # Process Kevin Calendar
