@@ -4,5 +4,8 @@
 
 (org-mycal-export)
 
+(org-mobile-push)
+(org-mobile-pull)
+
 
 
