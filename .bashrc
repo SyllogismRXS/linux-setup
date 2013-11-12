@@ -116,8 +116,10 @@ fi
 # MOOS Setup
 #
 #source ~/git-repos/yellowfin2_0/uuv-main/setup.sh
-export PATH=${PATH}:~/repos/3rd-party/moos-ivp/bin
-
+#export PATH=${PATH}:~/repos/3rd-party/moos-ivp/bin
+export PATH=${PATH}:~/repos/avia/trunk/src/scenarioController/third-party-build/moos-ivp/bin
+#export IVP_BEHAVIOR_DIRS=${IVP_BEHAVIOR_DIRS}:~/repos/avia/trunk/src/scenarioController/sam/lib
+export IVP_BEHAVIOR_DIRS=${IVP_BEHAVIOR_DIRS}:/usr/local/lib
 
 #
 # JTS Setup
@@ -137,8 +139,12 @@ alias e='emacs -nw'
 #
 # SAM / AVIA Setup
 #
+#source ~/repos/avia/sam/setenv.sh
+#source ~/repos/avia/avia-app/setenv.sh
 #source /home/syllogismrxs/svn-repos/AVIA/trunk/cmake-proj/avia/sam/setenv.sh
 #source /home/syllogismrxs/svn-repos/AVIA/trunk/cmake-proj/avia/avia-app/setenv.sh
+source ~/repos/avia/trunk/src/scenarioController/sam/setenv.sh
+source ~/repos/avia/trunk/src/scenarioController/avia-app/setenv.sh
 
 #
 # ROS Setup
