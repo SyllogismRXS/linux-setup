@@ -4,7 +4,7 @@
 /// @file (>>>FILE<<<)
 /// @author (>>>USER_NAME<<<) <(>>>AUTHOR<<<)>
 ///
-/// Time-stamp: <2013-01-02 15:57:34 syllogismrxs>
+/// Time-stamp: <2013-11-21 12:54:12 syllogismrxs>
 ///
 /// @version 1.0
 /// Created: (>>>DATE<<<)
@@ -40,15 +40,13 @@
 /// ----------------------------------------------------------------------------
 
 class (>>>FILE_SANS<<<) {
-private:
-     (>>>POINT<<<)int count_;
-     
-protected:
 public:
      (>>>FILE_SANS<<<)();
-
      int count();
      void set_count(int count);
+protected:
+private:
+     (>>>POINT<<<)int count_;
 };
 
 #endif
