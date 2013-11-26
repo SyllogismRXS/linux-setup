@@ -35,7 +35,10 @@ DEPS_RPM=()
 # Dependencies only for Ubuntu
 DEPS_DPKG=(
 build-essential
-#texlive-full
+gnome-panel
+auctex
+texlive-full
+okular
 #texmaker
 )
 
