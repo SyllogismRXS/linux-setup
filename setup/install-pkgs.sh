@@ -27,6 +27,7 @@ cmake
 emacs
 #cscope
 wmctrl
+texlive-full
 )
 
 # Dependencies only for RedHat, CentOS, etc.
