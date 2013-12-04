@@ -360,25 +360,19 @@ G-C-\\: Split Window
 
 (setq org-log-done 'time)
 
-(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("school" . ?s) ("music" . ?m)))
+(setq org-tag-alist '(("@idea" . ?i) ("@leadlaser" . ?l) ("blooky" . ?b) ("art" . ?a)))
 
 ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org"))
 ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*"))
 ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org")
 ;                       (file-expand-wildcards "~/Dropbox/org/calendars/*.org"))
 
-(setq org-agenda-files (list "~/Dropbox/org/blooky.org"
-                             "~/Dropbox/org/creative.org"
+(setq org-agenda-files (list "~/Dropbox/org/calendar-gtri.org"
+                             "~/Dropbox/org/calendar-kevin.org"
+                             "~/Dropbox/org/consulting.org"
                              "~/Dropbox/org/gtri.org"
-                             "~/Dropbox/org/ideas.org"
                              "~/Dropbox/org/personal.org" 
-                             "~/Dropbox/org/leadlaser.org"
-                             "~/Dropbox/org/personal.org"
                              "~/Dropbox/org/thesis.org"
-                             "~/Dropbox/org/values.org"
-                             "~/Dropbox/org/academics-calendar.org"
-                             "~/Dropbox/org/kevin-calendar.org"
-                             "~/Dropbox/org/gtri-calendar.org"
                              ))
 
 ;; Set to the location of your Org files on your local system
