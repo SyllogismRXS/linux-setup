@@ -4,13 +4,12 @@ PATH=${PATH}:/home/syllogismrxs/git-repos/linux-setup/scripts
 
 pushd /home/syllogismrxs >& /dev/null
 
-#CALENDAR_DIR=~/Dropbox/org/calendars
 CALENDAR_DIR=~/Dropbox/org
 
 # Process Kevin Calendar
 KEVIN_CAL=https://www.google.com/calendar/ical/1hh0c89f99lnhrsrfts90jtsog%40group.calendar.google.com/private-e7eb229cebb35e594a020a2507b92bd8/basic.ics
 KEVIN_FILE=kevin.ics
-KEVIN_ORG="${CALENDAR_DIR}/kevin-calendar.org"
+KEVIN_ORG="${CALENDAR_DIR}/calendar-kevin.org"
 
 wget -O ${KEVIN_FILE} ${KEVIN_CAL}
 ical2org < ${KEVIN_FILE} > ${KEVIN_ORG}
@@ -22,7 +21,7 @@ rm kevin.ics
 # Process GTRI Calendar
 GTRI_CAL=https://www.google.com/calendar/ical/kevin.demarco%40gmail.com/private-cada3329e1ba7cde88d1cc4eee0a7c91/basic.ics
 GTRI_FILE=gtri.ics
-GTRI_ORG="${CALENDAR_DIR}/gtri-calendar.org"
+GTRI_ORG="${CALENDAR_DIR}/calendar-gtri.org"
 
 wget -O ${GTRI_FILE} ${GTRI_CAL}
 ical2org < ${GTRI_FILE} > ${GTRI_ORG}
@@ -30,15 +29,15 @@ ical2org < ${GTRI_FILE} > ${GTRI_ORG}
 # Clean up
 rm gtri.ics
 
-# Process ACADEMICS Calendar
-ACADEMICS_CAL=https://www.google.com/calendar/ical/95q4c4hkpj3ea9jaq7kl4fq0i0%40group.calendar.google.com/private-33bdeb3b7195d5f0041e243524388c20/basic.ics
-ACADEMICS_FILE=academics.ics
-ACADEMICS_ORG="${CALENDAR_DIR}/academics-calendar.org"
-
-wget -O ${ACADEMICS_FILE} ${ACADEMICS_CAL}
-ical2org < ${ACADEMICS_FILE} > ${ACADEMICS_ORG}
-
-# Clean up
-rm academics.ics
+#### Process ACADEMICS Calendar
+###ACADEMICS_CAL=https://www.google.com/calendar/ical/95q4c4hkpj3ea9jaq7kl4fq0i0%40group.calendar.google.com/private-33bdeb3b7195d5f0041e243524388c20/basic.ics
+###ACADEMICS_FILE=academics.ics
+###ACADEMICS_ORG="${CALENDAR_DIR}/academics-calendar.org"
+###
+###wget -O ${ACADEMICS_FILE} ${ACADEMICS_CAL}
+###ical2org < ${ACADEMICS_FILE} > ${ACADEMICS_ORG}
+###
+#### Clean up
+###rm academics.ics
 
 popd >& /dev/null
