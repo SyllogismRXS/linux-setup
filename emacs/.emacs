@@ -360,7 +360,7 @@ G-C-\\: Split Window
 
 (setq org-log-done 'time)
 
-(setq org-tag-alist '(("@idea" . ?i) ("@leadlaser" . ?l) ("blooky" . ?b) ("art" . ?a)))
+(setq org-tag-alist '(("idea" . ?i) ("leadlaser" . ?l) ("blooky" . ?b) ("art" . ?a)))
 
 ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org"))
 ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*"))
