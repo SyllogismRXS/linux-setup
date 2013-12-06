@@ -25,14 +25,14 @@ fi
 ORIGINAL_USER=$(who am i | awk '{print $1}')
 
 #
-# Install packages
-#
-./install-pkgs.sh
-
-#
 # Make symbolic links for profile files
 #
 su $ORIGINAL_USER -m -c './links.sh'
+
+#
+# Install packages
+#
+./install-pkgs.sh
 
 echo "===================================="
 echo "=        Setup Complete            ="
