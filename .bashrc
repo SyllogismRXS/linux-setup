@@ -117,21 +117,21 @@ fi
 #
 #source ~/git-repos/yellowfin2_0/uuv-main/setup.sh
 #export PATH=${PATH}:~/repos/3rd-party/moos-ivp/bin
-export PATH=${PATH}:~/repos/avia/trunk/src/scenarioController/third-party-build/moos-ivp/bin
+#export PATH=${PATH}:~/repos/avia/trunk/src/scenarioController/third-party-build/moos-ivp/bin
 #export IVP_BEHAVIOR_DIRS=${IVP_BEHAVIOR_DIRS}:~/repos/avia/trunk/src/scenarioController/sam/lib
-export IVP_BEHAVIOR_DIRS=${IVP_BEHAVIOR_DIRS}:/usr/local/lib
+#export IVP_BEHAVIOR_DIRS=${IVP_BEHAVIOR_DIRS}:/usr/local/lib
 
 #
 # JTS Setup
 #
-export JTS_COMMON_PATH=~/repos/3rd-party/jaustoolset-read-only/GUI/templates/component
+#export JTS_COMMON_PATH=~/repos/3rd-party/jaustoolset-read-only/GUI/templates/component
 
 
 
 #
 # SMC Setup
 #
-export SMC_HOME=~/builds/smc
+#export SMC_HOME=~/builds/smc
 
 export TERM=xterm-256color
 alias e='emacs -nw'
@@ -139,17 +139,13 @@ alias e='emacs -nw'
 #
 # SAM / AVIA Setup
 #
-#source ~/repos/avia/sam/setenv.sh
-#source ~/repos/avia/avia-app/setenv.sh
-#source /home/syllogismrxs/svn-repos/AVIA/trunk/cmake-proj/avia/sam/setenv.sh
-#source /home/syllogismrxs/svn-repos/AVIA/trunk/cmake-proj/avia/avia-app/setenv.sh
-source ~/repos/avia/trunk/src/scenarioController/sam/setenv.sh
-source ~/repos/avia/trunk/src/scenarioController/avia-app/setenv.sh
+#source ~/repos/avia/trunk/src/scenarioController/sam/setenv.sh
+#source ~/repos/avia/trunk/src/scenarioController/avia-app/setenv.sh
 
 #
 # ROS Setup
 #
-source /opt/ros/groovy/setup.bash
+#source /opt/ros/groovy/setup.bash
 
 CATKIN_WS1_SETUP=~/repos/syllo-ros/catkin_ws/devel/setup.sh         
 if [ -f ${CATKIN_WS1_SETUP} ]; then
@@ -157,7 +153,7 @@ source ${CATKIN_WS1_SETUP}
 fi 
 
 # Add Blender to Path
-export PATH=${PATH}:~/apps/blender-2.68a-linux-glibc211-x86_64
+#export PATH=${PATH}:~/apps/blender-2.68a-linux-glibc211-x86_64
 
 #
 # MORSE Setup
@@ -169,13 +165,13 @@ source ${MORSE_ENV_VARS}
 fi
 #-----------------------------------------------------
 
-export QT_PLUGIN_PATH=/usr/local/qwt-6.1.0/plugins
+#export QT_PLUGIN_PATH=/usr/local/qwt-6.1.0/plugins
 
 #
 # Stage Setup
 #
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64
-export STAGEPATH=/usr/local/lib64
+#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64
+#export STAGEPATH=/usr/local/lib64
 
 #
 # Add user script directory to path
