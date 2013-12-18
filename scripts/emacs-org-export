@@ -4,12 +4,7 @@
 ; emacs scripts
 ;
 
-
 (load-file "/home/syllogismrxs/.emacs")
-
-(defun alwaystrue (x)
-  "Always returns true"
-  t)
 
 (org-mycal-export)
 
@@ -17,5 +12,14 @@
 (org-mobile-pull)
 
 ;(setq confirm-kill-emacs 'alwaystrue)
-(save-buffers-kill-terminal t)
+;(save-buffers-kill-terminal t)
+;(save-some-buffers t)
+
+;(defun alwaystrue (x)
+;  "Always returns true"
+;  t)
+
+;#!/bin/bash
+;#emacs --batch --load ~/.emacs --eval "(org-mobile-pull)" --eval "(org-mobile-push)"
+
 
