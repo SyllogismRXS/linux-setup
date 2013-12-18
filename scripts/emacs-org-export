@@ -1,8 +1,21 @@
-#!/usr/bin/emacs --script
+:;exec emacs -batch -l   "$0" -f : "$@" --no-site-file -q  # -*- Emacs-Lisp -*-
+;     @emacs -batch -l "%~f0" -f :  %*  --no-site-file -q  & goto :EOF
+;
+; emacs scripts
+;
+
 
 (load-file "/home/syllogismrxs/.emacs")
 
+(defun alwaystrue (x)
+  "Always returns true"
+  t)
+
 (org-mycal-export)
 
-(org-mobile-pull)
 (org-mobile-push)
+(org-mobile-pull)
+
+;(setq confirm-kill-emacs 'alwaystrue)
+(save-buffers-kill-terminal t)
+
