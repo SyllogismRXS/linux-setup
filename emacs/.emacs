@@ -389,6 +389,9 @@ G-C-\\: Split Window
 ;;; define categories that should be excluded
 (setq org-export-exclude-category (list "google" "private"))
 
+;;; Define the directory to which archive files should be saved
+(setq org-archive-location "~/Dropbox/org/archive/%s_archive::")
+
 ;;; define filter. The filter is called on each entry in the agenda.
 ;;; It defines a regexp to search for two timestamps, gets the start
 ;;; and end point of the entry and does a regexp search. It also
@@ -433,3 +436,7 @@ G-C-\\: Split Window
  "Nonce function"
  (interactive)
  (message "Howdie-doodie fella"))
+
+(add-to-list 'auto-mode-alist '("\\.launch\\'" . nxml-mode))
+
+(add-to-list 'auto-mode-alist '("\\.ino\\'" . c-mode))
