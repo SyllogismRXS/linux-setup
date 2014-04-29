@@ -113,25 +113,14 @@ fi
 #######################################
 
 #
-# MOOS Setup
-#
-#source ~/git-repos/yellowfin2_0/uuv-main/setup.sh
-#export PATH=${PATH}:~/repos/3rd-party/moos-ivp/bin
-#export PATH=${PATH}:~/repos/avia/trunk/src/scenarioController/third-party-build/moos-ivp/bin
-#export IVP_BEHAVIOR_DIRS=${IVP_BEHAVIOR_DIRS}:~/repos/avia/trunk/src/scenarioController/sam/lib
-#export IVP_BEHAVIOR_DIRS=${IVP_BEHAVIOR_DIRS}:/usr/local/lib
-
-#
 # JTS Setup
 #
-#export JTS_COMMON_PATH=~/repos/3rd-party/jaustoolset-read-only/GUI/templates/component
-
-
+export JTS_COMMON_PATH=~/repos/3rd-party/jaustoolset-read-only/GUI/templates/component
 
 #
 # SMC Setup
 #
-#export SMC_HOME=~/builds/smc
+#export SMC_HOME=~/repos/3rd-party/smc_6_3_0
 
 export TERM=xterm-256color
 alias e='emacs -nw'
@@ -139,21 +128,32 @@ alias e='emacs -nw'
 #
 # SAM / AVIA Setup
 #
-#source ~/repos/avia/trunk/src/scenarioController/sam/setenv.sh
-#source ~/repos/avia/trunk/src/scenarioController/avia-app/setenv.sh
+source /home/syllogismrxs/repos/avia/trunk/src/scenarioController/sam/setenv.sh
+source /home/syllogismrxs/repos/avia/trunk/src/scenarioController/avia-app/setenv.sh
 
 #
 # ROS Setup
 #
 #source /opt/ros/groovy/setup.bash
+source /opt/ros/hydro/setup.bash
 
-CATKIN_WS1_SETUP=~/repos/syllo-ros/catkin_ws/devel/setup.sh         
+export BLUEVIEW_SDK_ROOT=/home/syllogismrxs/repos/sonar-processing/bvtsdk
+
+# UWSIM
+CATKIN_WS1_SETUP=/home/syllogismrxs/repos/syllo-uwsim/uwsim/catkin_ws/setenv.sh
 if [ -f ${CATKIN_WS1_SETUP} ]; then
-source ${CATKIN_WS1_SETUP}
-fi 
+    source ${CATKIN_WS1_SETUP}
+fi
+
+#CATKIN_WS2_SETUP=/home/syllogismrxs/repos/gt-ros-pkg.humans/setenv.sh
+CATKIN_WS2_SETUP=/home/syllogismrxs/repos/humans/setenv.sh
+if [ -f ${CATKIN_WS2_SETUP} ]; then
+source ${CATKIN_WS2_SETUP}
+fi
 
 # Add Blender to Path
-#export PATH=${PATH}:~/apps/blender-2.68a-linux-glibc211-x86_64
+export PATH=${PATH}:~/apps/blender-2.69-linux-glibc211-i686
+
 
 #
 # MORSE Setup
@@ -165,15 +165,30 @@ source ${MORSE_ENV_VARS}
 fi
 #-----------------------------------------------------
 
-#export QT_PLUGIN_PATH=/usr/local/qwt-6.1.0/plugins
+export QT_PLUGIN_PATH=/usr/local/qwt-6.1.0/plugins
 
 #
 # Stage Setup
 #
-#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64
-#export STAGEPATH=/usr/local/lib64
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64
+export STAGEPATH=/usr/local/lib64
 
 #
 # Add user script directory to path
 #
 export PATH=${PATH}:~/repos/linux-setup/scripts
+
+#
+# Leap root
+#
+export LEAP_ROOT=~/repos/3rd-party/LeapDeveloperKit/LeapSDK
+
+export PLEXIL_HOME=~/repos/3rd-party/plexil
+export PATH=$PLEXIL_HOME/bin:$PATH
+
+#
+# Gazebo Config
+#
+export LD_LIBRARY_PATH=/home/syllogismrxs/local/lib:$LD_LIBRARY_PATH
+export PATH=/home/syllogismrxs/local/bin:$PATH
+export PKG_CONFIG_PATH=/home/syllogismrxs/local/lib/pkgconfig:$PKG_CONFIG_PATH
