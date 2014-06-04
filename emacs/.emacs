@@ -442,7 +442,7 @@ G-C-\\: Split Window
 (setq org-icalendar-use-scheduled '(event-if-not-todo todo-due))
 (setq org-icalendar-use-deadline '(event-if-not-todo todo-due))
 
-; Debug / test functions
+;; Debug / test functions
 (defun doodlebug ()
  "Nonce function"
  (interactive)
@@ -452,7 +452,25 @@ G-C-\\: Split Window
 
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c-mode))
 
-; Journal
+;; Journal
 (load "journal")
 (if (file-directory-p "~/Dropbox/org/journal/")
     (setq-default journal-dir "~/Dropbox/org/journal/"))
+
+(global-set-key [f1] 'recompile)
+
+;; E-mail setup
+(setq gnus-select-method
+'(nnimap "gmail"
+         (nnimap-address "imap.gmail.com")
+         (nnimap-server-port 993)
+         (nnimap-stream ssl)))
+
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+      smtpmail-auth-credentials '(("smtp.gmail.com" 587
+				   "kevin.demarco@gmail.com" nil))
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
