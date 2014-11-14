@@ -258,11 +258,11 @@ G-C-\\: Split Window
 (setq user-full-name "Kevin DeMarco")
 
 ;; Line numbers on side of screen
-;;(require 'linum)
-;;(line-number-mode 1)
-;;(column-number-mode 1)  ;; Line numbers on left most column
-;;(global-linum-mode 1)
-;;(setq linum-format "%4d \u2502 ")
+(require 'linum)
+(line-number-mode 1)
+(column-number-mode 1)  ;; Line numbers on left most column
+(global-linum-mode 1)
+(setq linum-format "%4d \u2502 ")
 
 ;; Set timestamp
 (add-hook 'before-save-hook 'time-stamp)
@@ -275,7 +275,7 @@ G-C-\\: Split Window
 (require 'fill-column-indicator)
 (define-globalized-minor-mode global-fci-mode fci-mode
   (lambda () (fci-mode t)))
-;(global-fci-mode t)
+(global-fci-mode t)
 
 (when (fboundp 'windmove-default-keybindings)
       (windmove-default-keybindings))
@@ -384,6 +384,7 @@ G-C-\\: Split Window
                              "~/Dropbox/org/gtri.org"
                              "~/Dropbox/org/personal.org" 
                              "~/Dropbox/org/thesis.org"
+                             "~/Dropbox/org/blooky.org"
                              ))
 
 ;; Set to the location of your Org files on your local system
@@ -459,18 +460,21 @@ G-C-\\: Split Window
 
 (global-set-key [f1] 'recompile)
 
-;; E-mail setup
-(setq gnus-select-method
-'(nnimap "gmail"
-         (nnimap-address "imap.gmail.com")
-         (nnimap-server-port 993)
-         (nnimap-stream ssl)))
+;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
+(defun rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn
+          (rename-file name new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil))))))
 
-(setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-      smtpmail-auth-credentials '(("smtp.gmail.com" 587
-				   "kevin.demarco@gmail.com" nil))
-      smtpmail-default-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-service 587
-      gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+(add-to-list 'default-frame-alist '(height . 400))
+(add-to-list 'default-frame-alist '(width . 100))
