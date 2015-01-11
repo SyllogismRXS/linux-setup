@@ -121,35 +121,50 @@ export JTS_COMMON_PATH=~/repos/3rd-party/jaustoolset-read-only/GUI/templates/com
 # SMC Setup
 #
 #export SMC_HOME=~/repos/3rd-party/smc_6_3_0
+export SMC_HOME=~/repos/avia/trunk/src/scenarioController/third-party-build/smc
+
+export SMC_HOME=~/repos/3rd-party/smc_6_3_0
 
 export TERM=xterm-256color
-alias e='emacs -nw'
+
 
 #
 # SAM / AVIA Setup
 #
-source /home/syllogismrxs/repos/avia/trunk/src/scenarioController/sam/setenv.sh
-source /home/syllogismrxs/repos/avia/trunk/src/scenarioController/avia-app/setenv.sh
+#source /home/syllogismrxs/.avia/config
+#export PATH=$PATH:~/repos/3rd-party/moos-ivp/bin
+
+#source /home/syllogismrxs/repos/avia/trunk/src/scenarioController/sam/setenv.sh
+#source /home/syllogismrxs/repos/avia/trunk/src/scenarioController/avia-app/setenv.sh
 
 #
 # ROS Setup
 #
 #source /opt/ros/groovy/setup.bash
-source /opt/ros/hydro/setup.bash
+source /opt/ros/indigo/setup.bash
+
+export EDITOR='emacs -nw'
 
 export BLUEVIEW_SDK_ROOT=/home/syllogismrxs/repos/sonar-processing/bvtsdk
 
-# UWSIM
-CATKIN_WS1_SETUP=/home/syllogismrxs/repos/syllo-uwsim/uwsim/catkin_ws/setenv.sh
-if [ -f ${CATKIN_WS1_SETUP} ]; then
-    source ${CATKIN_WS1_SETUP}
-fi
+## UWSIM
+#CATKIN_WS1_SETUP=/home/syllogismrxs/repos/syllo-uwsim/uwsim/catkin_ws/setenv.sh
+#if [ -f ${CATKIN_WS1_SETUP} ]; then
+#    source ${CATKIN_WS1_SETUP}
+#fi
+#
+## Humans
+#CATKIN_WS2_SETUP=/home/syllogismrxs/repos/humans/setenv.sh
+#if [ -f ${CATKIN_WS2_SETUP} ]; then
+#source ${CATKIN_WS2_SETUP}
+#fi
+#
+## AVC 
+#CATKIN_WS3_SETUP=/home/syllogismrxs/repos/avc-2014/catkin_ws/setenv.sh
+#if [ -f ${CATKIN_WS3_SETUP} ]; then
+#source ${CATKIN_WS3_SETUP}
+#fi
 
-#CATKIN_WS2_SETUP=/home/syllogismrxs/repos/gt-ros-pkg.humans/setenv.sh
-CATKIN_WS2_SETUP=/home/syllogismrxs/repos/humans/setenv.sh
-if [ -f ${CATKIN_WS2_SETUP} ]; then
-source ${CATKIN_WS2_SETUP}
-fi
 
 # Add Blender to Path
 export PATH=${PATH}:~/apps/blender-2.69-linux-glibc211-i686
@@ -159,10 +174,10 @@ export PATH=${PATH}:~/apps/blender-2.69-linux-glibc211-i686
 # MORSE Setup
 #
 #-----------------------------------------------------
-MORSE_ENV_VARS=/home/syllogismrxs/repos/syllo-morse/setenv.sh
-if [ -f ${MORSE_ENV_VARS} ]; then
-source ${MORSE_ENV_VARS}
-fi
+#MORSE_ENV_VARS=/home/syllogismrxs/repos/syllo-morse/setenv.sh
+#if [ -f ${MORSE_ENV_VARS} ]; then
+#source ${MORSE_ENV_VARS}
+#fi
 #-----------------------------------------------------
 
 export QT_PLUGIN_PATH=/usr/local/qwt-6.1.0/plugins
@@ -189,6 +204,17 @@ export PATH=$PLEXIL_HOME/bin:$PATH
 #
 # Gazebo Config
 #
-export LD_LIBRARY_PATH=/home/syllogismrxs/local/lib:$LD_LIBRARY_PATH
-export PATH=/home/syllogismrxs/local/bin:$PATH
-export PKG_CONFIG_PATH=/home/syllogismrxs/local/lib/pkgconfig:$PKG_CONFIG_PATH
+#export LD_LIBRARY_PATH=/home/syllogismrxs/local/lib:$LD_LIBRARY_PATH
+#export PATH=/home/syllogismrxs/local/bin:$PATH
+#export PKG_CONFIG_PATH=/home/syllogismrxs/local/lib/pkgconfig:$PKG_CONFIG_PATH
+#export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:/home/syllogismrxs/repos/humans/src/gazebo_plugins/gazebo_plugin_tutorial/build
+
+#export GAZEBO_RESOURCE_PATH="${GAZEBO_RESOURCE_PATH}:/home/syllogismrxs/repos/avc-2014/catkin_ws/src/gruvi_gazebo/materials/dem"
+#export GAZEBO_MODEL_PATH="${GAZEBO_MODEL_PATH}:/home/syllogismrxs/repos/avc-2014/catkin_ws/src/gruvi_gazebo/materials/dem"
+
+#source /home/syllogismrxs/repos/3rd-party/rrbot/catkin_ws/devel/setup.bash
+
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/repos/moos-ros-bridge
+
+
+source /opt/RTI/rti_set_bash_5.1.0

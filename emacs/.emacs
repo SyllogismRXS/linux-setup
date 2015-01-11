@@ -167,6 +167,8 @@ G-C-\\: Split Window
   (describe-function 'edt-user-keypad-help))
 
 
+;(add-to-list 'load-path "~/.emacs.d/cc-mode")
+
 ;Set load-path for libraries (Linux Only)
 ;In windows, the site-lisp direction should be
 ;in the emacs-23.3/ directory, i.e. same level
@@ -205,21 +207,6 @@ G-C-\\: Split Window
  '(ido-max-work-directory-list 0)
  '(ido-max-work-file-list 0))
 
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-;(custom-set-variables
-;  '(auto-save-file-name-transforms '((".*" "c:/.emacs.d/autosaves/\\1" t)))
-;  '(backup-directory-alist '((".*" . "c:/.emacs.d/backups/"))))
-
-;; create the autosave dir if necessary, since emacs won't.
-;;(make-directory "c:/.emacs.d/autosaves/" t)
-;;(make-directory "c:/.emacs.d/backups/" t)
-
-;(defun my-emacs-command-beautify-region()
-;	(interactive)
-;	(let ((cmd "astyle"))
-;	(shell-command-on-region (region-beginning) (region-end) cmd (current-buffer) t))
-
-
 ;; arch-tag: a4671ca7-34b7-43a5-844c-2b2a89134ff4
 ;;; edt-user.el ends here
 
@@ -237,15 +224,25 @@ G-C-\\: Split Window
 )
 
 
-;;
-;; Load scilab emacs editor
-;;
-;(load "scilab-startup")
 
-;disable backup
-(setq backup-inhibited t)
-;disable auto save
-(setq auto-save-default nil)
+;; make backup to a designated dir, mirroring the full path
+(defun my-backup-file-name (fpath)
+  "Return a new file path of a given file path.
+If the new path's directories does not exist, create them."
+  (let* (
+         (backupRootDir "~/.emacs.d/emacs-backup/")
+         (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path, ⁖ “C:”
+         (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") ))
+         )
+    (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
+    backupFilePath
+    )
+  )
+
+(setq make-backup-file-name-function 'my-backup-file-name)
+
+;(setq make-backup-files nil) ; stop creating those backup~ files
+;(setq auto-save-default nil) ; stop creating those #autosave# files
 
 (setq c-default-style "k&r")
 
@@ -261,8 +258,8 @@ G-C-\\: Split Window
 (require 'linum)
 (line-number-mode 1)
 (column-number-mode 1)  ;; Line numbers on left most column
-(global-linum-mode 1)
-(setq linum-format "%4d \u2502 ")
+;(global-linum-mode 1)
+(setq linum-format "%4d \u2502")
 
 ;; Set timestamp
 (add-hook 'before-save-hook 'time-stamp)
