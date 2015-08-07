@@ -167,7 +167,7 @@ G-C-\\: Split Window
   (describe-function 'edt-user-keypad-help))
 
 
-;(add-to-list 'load-path "~/.emacs.d/cc-mode")
+;(add-to-list 'load-path "~/.emacs.d/site-lisp/cc-mode")
 
 ;Set load-path for libraries (Linux Only)
 ;In windows, the site-lisp direction should be
@@ -375,9 +375,7 @@ If the new path's directories does not exist, create them."
 ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org")
 ;                       (file-expand-wildcards "~/Dropbox/org/calendars/*.org"))
 
-(setq org-agenda-files (list "~/Dropbox/org/calendar-gtri.org"
-                             "~/Dropbox/org/calendar-kevin.org"
-                             "~/Dropbox/org/consulting.org"
+(setq org-agenda-files (list "~/Dropbox/org/consulting.org"
                              "~/Dropbox/org/gtri.org"
                              "~/Dropbox/org/personal.org" 
                              "~/Dropbox/org/thesis.org"
@@ -447,6 +445,11 @@ If the new path's directories does not exist, create them."
  (message "Howdie-doodie fella"))
 
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.world\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.sdf\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.xacro\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.urdf\\'" . nxml-mode))
+
 
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c-mode))
 
@@ -475,3 +478,11 @@ If the new path's directories does not exist, create them."
 
 (add-to-list 'default-frame-alist '(height . 400))
 (add-to-list 'default-frame-alist '(width . 100))
+
+(defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer 
+          (delq (current-buffer) 
+                (remove-if-not 'buffer-file-name (buffer-list)))))
+
