@@ -22,18 +22,53 @@
 #                                                                              #
 #******************************************************************************/
 
+# Fix SSH password bug
+# http://askubuntu.com/questions/362280/enter-ssh-passphrase-once
+SSH_ENV=$HOME/.ssh/environment
+
+# start the ssh-agent
+function start_agent {
+    echo "Initializing new SSH agent..."
+    # spawn ssh-agent
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+}
+
+if [ -f "${SSH_ENV}" ]; then
+     . "${SSH_ENV}" > /dev/null
+     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+
+# 5 frames/sec seems to be the lowest possible framerate before the input
+# plugin crashes
+
 ## This example shows how to invoke mjpg-streamer from the command line
 MJPEG_STREAMER_DIR="/home/syllogismrxs/repos/3rd-party/mjpg-streamer/mjpg-streamer-experimental"
 
 pushd ${MJPEG_STREAMER_DIR} >& /dev/null
 
 export LD_LIBRARY_PATH="$(pwd)"
-nohup ./mjpg_streamer -i "input_uvc.so -d /dev/video0 -r 640x480" -o "output_http.so -w ./www -p 7000 -c jacy:ponce" > /dev/null 2>&1 &
-nohup ./mjpg_streamer -i "input_uvc.so -d /dev/video1 -r 640x480" -o "output_http.so -w ./www -p 7001 -c jacy:ponce" > /dev/null 2>&1 &
+
+nohup ./mjpg_streamer -i "input_uvc.so -d /dev/video0 -n" -o "output_http.so -w ./www -p 7000 -c jacy:ponce" > /dev/null 2>&1 &
+# For older web cams
+#nohup ./mjpg_streamer -i "input_uvc.so -f 5 -d /dev/video1 -r 640x480 " -o "output_http.so -w ./www -p 7001 -c jacy:ponce" > /dev/null 2>&1 &
 
 popd >& /dev/null
 
 echo "Security started."
+
+# ## Log into second computer and start security
+# ssh syllogismrxs@192.168.1.24 /bin/bash <<EOF
+# /home/syllogismrxs/start-security.sh
+# EOF
+
 
 #./mjpg_streamer -i "input_uvc.so -d /dev/video1 -r 1280x960" -o "output_http.so -w ./www -p 9090"
 #./mjpg_streamer -i "input_uvc.so -d /dev/video0 -r 960x720" -o "output_http.so -w ./www -p 9090"
