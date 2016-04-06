@@ -259,7 +259,7 @@ If the new path's directories does not exist, create them."
 
 (setq c-default-style "k&r")
 
-(require 'xcscope)
+;(require 'xcscope)
 
 ;; setup for template package
 
@@ -279,7 +279,7 @@ If the new path's directories does not exist, create them."
 (setq time-stamp-pattern nil)
 
 ; Use spaces instead of tabs
- (setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 (setq-default fill-column 79)
 (require 'fill-column-indicator)
@@ -468,7 +468,7 @@ If the new path's directories does not exist, create them."
 (if (file-directory-p "~/Dropbox/org/journal/")
     (setq-default journal-dir "~/Dropbox/org/journal/"))
 
-(global-set-key [f1] 'recompile)
+(global-set-key [f5] 'recompile)
 
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun rename-file-and-buffer (new-name)
@@ -503,14 +503,14 @@ If the new path's directories does not exist, create them."
 ; ;; If there is more than one, they won't work right.
 ; '(default ((t (:family "Courier New" :foundry "monotype" :slant normal :weight normal :height 151 :width normal)))))
 
-;; Auto-complete
-;(add-to-list 'load-path (concat myoptdir "AC"))
-(load-file "~/.emacs.d/site-lisp/auto-complete-clang.el")
-(require 'auto-complete-config)
-;(add-to-list 'ac-dictionary-directories (concat myoptdir "AC/ac-dict"))
-(add-to-list 'ac-dictionary-directories "/home/syllogismrxs/repos/3rd-party/auto-complete/dict")
-
-(require 'auto-complete-clang)
+;;; Auto-complete
+;;(add-to-list 'load-path (concat myoptdir "AC"))
+;(load-file "~/.emacs.d/site-lisp/auto-complete-clang.el")
+;(require 'auto-complete-config)
+;;(add-to-list 'ac-dictionary-directories (concat myoptdir "AC/ac-dict"))
+;(add-to-list 'ac-dictionary-directories "/home/syllogismrxs/repos/3rd-party/auto-complete/dict")
+;a
+;(require 'auto-complete-clang)
 
 ;; (setq ac-auto-start nil)
 ;; (setq ac-quick-help-delay 0.5)
@@ -545,19 +545,19 @@ If the new path's directories does not exist, create them."
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
 
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
+;(add-hook 'c++-mode-hook 'irony-mode)
+;(add-hook 'c-mode-hook 'irony-mode)
+;(add-hook 'objc-mode-hook 'irony-mode)
 
-;; replace the `completion-at-point' and `complete-symbol' bindings in
-;; irony-mode's buffers by irony-mode's function
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;;; replace the `completion-at-point' and `complete-symbol' bindings in
+;;; irony-mode's buffers by irony-mode's function
+;(defun my-irony-mode-hook ()
+;  (define-key irony-mode-map [remap completion-at-point]
+;    'irony-completion-at-point-async)
+;  (define-key irony-mode-map [remap complete-symbol]
+;    'irony-completion-at-point-async))
+;(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 (setq tramp-default-method "ssh")
 
@@ -568,33 +568,65 @@ If the new path's directories does not exist, create them."
 ; (setq scroll-step 1) ;; keyboard scroll one line at a time
 ; (setq scroll-conservatively 10000)
 
+;(add-to-list 'company-backends 'company-c-headers)
 
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (if (derived-mode-p 'c-mode 'c++-mode)
-                (cppcm-reload-all)
-              )))
-;; OPTIONAL, somebody reported that they can use this package with Fortran
-(add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
-;; OPTIONAL, avoid typing full path when starting gdb
-(global-set-key (kbd "C-c C-g")
- '(lambda ()(interactive) (gud-gdb (concat "gdb --fullname " (cppcm-get-exe-path-current-buffer)))))
-;; OPTIONAL, some users need specify extra flags forwarded to compiler
-(setq cppcm-extra-preprocss-flags-from-user '("-I/usr/src/linux/include" "-DNDEBUG"))
+;(add-hook 'after-init-hook #'global-flycheck-mode)
+(require 'flymake)
+(setq cppcm-write-flymake-makefile nil)
 
-;; Scroll to first error in compilation output
-(setq compilation-scroll-output 'first-error)
+(add-hook 'after-init-hook 'global-company-mode)
+;(require 'global-company-mode)
+(eval-after-load 'company
+    '(push 'company-c-headers company-backends))
+;(add-to-list 'company-backends 'company-c-headers)
 
-;; Helper for compilation. Close the compilation window if there was no error
-;; at all.
-(defun compilation-exit-autoclose (status code msg)
-  ;; If M-x compile exists with a 0
-  (when (and (eq status 'exit) (zerop code))
-    ;; then bury the *compilation* buffer, so that C-x b doesn't go there
-    (bury-buffer)
-    ;; and delete the *compilation* window
-    (delete-window (get-buffer-window (get-buffer "*compilation*"))))
-  ;; Always return the anticipated result of compilation-exit-message-function
-  (cons msg code))
-;; Specify my function (maybe I should have done a lambda function)
-(setq compilation-exit-message-function 'compilation-exit-autoclose)
+;(defun complete-or-indent ()
+;  (interactive)
+;  (if (company-manual-begin)
+;      (company-complete-common)
+;    (indent-according-to-mode)))
+;
+;
+; (defun indent-or-complete ()
+;    (interactive)
+;    (if (looking-at "\\_>")
+;        (company-complete-common)
+;      (indent-according-to-mode)))
+;
+;(global-set-key [tab] 'indent-or-complete)
+
+;(global-set-key "\t" 'company-complete-common)
+
+;(local-set-key (kbd "TAB") 'complete-or-indent) 
+;(global-set-key "C-o" 'company-complete-common)
+;(setq company-idle-delay 0.0)
+
+ (add-hook 'c-mode-common-hook
+           (lambda ()
+             (if (derived-mode-p 'c-mode 'c++-mode)
+                 (cppcm-reload-all)
+               )))
+ ;; OPTIONAL, somebody reported that they can use this package with Fortran
+ (add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
+ ;; OPTIONAL, avoid typing full path when starting gdb
+ (global-set-key (kbd "C-c C-g")
+  '(lambda ()(interactive) (gud-gdb (concat "gdb --fullname " (cppcm-get-exe-path-current-buffer)))))
+ ;; OPTIONAL, some users need specify extra flags forwarded to compiler
+ (setq cppcm-extra-preprocss-flags-from-user '("-I/usr/src/linux/include" "-DNDEBUG"))
+ 
+ ;; Scroll to first error in compilation output
+ (setq compilation-scroll-output 'first-error)
+ 
+ ;; Helper for compilation. Close the compilation window if there was no error
+ ;; at all.
+ (defun compilation-exit-autoclose (status code msg)
+   ;; If M-x compile exists with a 0
+   (when (and (eq status 'exit) (zerop code))
+     ;; then bury the *compilation* buffer, so that C-x b doesn't go there
+     (bury-buffer)
+     ;; and delete the *compilation* window
+     (delete-window (get-buffer-window (get-buffer "*compilation*"))))
+   ;; Always return the anticipated result of compilation-exit-message-function
+   (cons msg code))
+ ;; Specify my function (maybe I should have done a lambda function)
+ (setq compilation-exit-message-function 'compilation-exit-autoclose)
