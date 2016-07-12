@@ -31,7 +31,6 @@
 
 ;; ====================================================================
 
-
 ;;; Code:
 
 ;;;;
@@ -82,7 +81,7 @@
   (edt-bind-key "\C-v" 'redraw-display)
   (edt-bind-key "\C-w" 'edt-set-screen-width-132)
   ;;; Leave binding of C-x as original prefix key.
-)
+  )
 
 ;;;
 ;;; LK-201 KEYBOARD USER EDT KEYPAD HELP
@@ -167,12 +166,12 @@ G-C-\\: Split Window
   (describe-function 'edt-user-keypad-help))
 
 
-;(add-to-list 'load-path "~/.emacs.d/site-lisp/cc-mode")
+                                        ;(add-to-list 'load-path "~/.emacs.d/site-lisp/cc-mode")
 
-;Set load-path for libraries (Linux Only)
-;In windows, the site-lisp direction should be
-;in the emacs-23.3/ directory, i.e. same level
-; as /bin
+                                        ;Set load-path for libraries (Linux Only)
+                                        ;In windows, the site-lisp direction should be
+                                        ;in the emacs-23.3/ directory, i.e. same level
+                                        ; as /bin
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 (setq inhibit-splash-screen t)
@@ -184,8 +183,8 @@ G-C-\\: Split Window
 (color-theme-initialize)
 (color-theme-clarity)
 
-; Use a different color scheme when using terminal
-;(when (display-graphic-p) (color-theme-dark-laptop))
+                                        ; Use a different color scheme when using terminal
+                                        ;(when (display-graphic-p) (color-theme-dark-laptop))
 
 ;; Modify the default grep command when I type: M-x grep
 ;; -n : list line numbers
@@ -197,46 +196,17 @@ G-C-\\: Split Window
 (require 'ido) ;enable ido-mode
 
 (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode 1)
-  
-;; Disable the .ido.last question on exit
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(LaTeX-command "latex -synctex=1")
- '(TeX-command-list (quote (("XeLaTeX_SyncteX" "%`xelatex --synctex=1%(mode)%' %t" TeX-run-TeX nil (latex-mode doctex-mode) :help "Run XeLaTeX") ("TeX" "%(PDF)%(tex) %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil (plain-tex-mode texinfo-mode ams-tex-mode) :help "Run plain TeX") ("LaTeX" "%`%l%(mode)%' %t" TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX") ("Makeinfo" "makeinfo %t" TeX-run-compile nil (texinfo-mode) :help "Run Makeinfo with Info output") ("Makeinfo HTML" "makeinfo --html %t" TeX-run-compile nil (texinfo-mode) :help "Run Makeinfo with HTML output") ("AmSTeX" "%(PDF)amstex %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil (ams-tex-mode) :help "Run AMSTeX") ("ConTeXt" "texexec --once --texutil %(execopts)%t" TeX-run-TeX nil (context-mode) :help "Run ConTeXt once") ("ConTeXt Full" "texexec %(execopts)%t" TeX-run-TeX nil (context-mode) :help "Run ConTeXt until completion") ("BibTeX" "bibtex %s" TeX-run-BibTeX nil t :help "Run BibTeX") ("View" "%V" TeX-run-discard-or-function nil t :help "Run Viewer") ("Print" "%p" TeX-run-command t t :help "Print the file") ("Queue" "%q" TeX-run-background nil t :help "View the printer queue" :visible TeX-queue-command) ("File" "%(o?)dvips %d -o %f " TeX-run-command t t :help "Generate PostScript file") ("Index" "makeindex %s" TeX-run-command nil t :help "Create index file") ("Check" "lacheck %s" TeX-run-compile nil (latex-mode) :help "Check LaTeX file for correctness") ("Spell" "(TeX-ispell-document \"\")" TeX-run-function nil t :help "Spell-check the document") ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files") ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files") ("Other" "" TeX-run-command t t :help "Run an arbitrary command") ("Jump to PDF" "%V" TeX-run-discard-or-function nil t :help "Run Viewer"))))
- '(TeX-modes (quote (tex-mode plain-tex-mode texinfo-mode latex-mode doctex-mode)))
- '(column-number-mode t)
- '(ido-enable-last-directory-history nil)
- '(ido-max-work-directory-list 0)
- '(ido-max-work-file-list 0)
- '(ido-record-commands nil))
-
-;(latex-preview-pane-enable)
-
-(setq-default TeX-master nil) ; Query for master file.
-;(setq-default TeX-master "master") ; All master files called "master".
-
-;; arch-tag: a4671ca7-34b7-43a5-844c-2b2a89134ff4
-;;; edt-user.el ends here
-
-;;; File: emacs-format-file
-;;; Stan Warford
-;;; 17 May 2006
+(setq ido-everywhere t)
+(ido-mode 1)
 
 (defun emacs-format-function ()
-   "Format the whole buffer."
-   (interactive)
-   (c-set-style "k&r")
-   (indent-region (point-min) (point-max) nil)
-   (untabify (point-min) (point-max))
-   (save-buffer)
-)
-
-
+  "Format the whole buffer."
+  (interactive)
+  (c-set-style "k&r")
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max))
+  (save-buffer)
+  )
 
 ;; make backup to a designated dir, mirroring the full path
 (defun my-backup-file-name (fpath)
@@ -254,12 +224,8 @@ If the new path's directories does not exist, create them."
 
 (setq make-backup-file-name-function 'my-backup-file-name)
 
-;(setq make-backup-files nil) ; stop creating those backup~ files
-;(setq auto-save-default nil) ; stop creating those #autosave# files
-
 (setq c-default-style "k&r")
 
-;(require 'xcscope)
 
 ;; setup for template package
 
@@ -271,14 +237,14 @@ If the new path's directories does not exist, create them."
 (require 'linum)
 (line-number-mode 1)
 (column-number-mode 1)  ;; Line numbers on left most column
-;(global-linum-mode 1)
+                                        ;(global-linum-mode 1)
 (setq linum-format "%4d \u2502")
 
 ;; Set timestamp
 (add-hook 'before-save-hook 'time-stamp)
 (setq time-stamp-pattern nil)
 
-; Use spaces instead of tabs
+                                        ; Use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
 (setq-default fill-column 79)
@@ -288,23 +254,7 @@ If the new path's directories does not exist, create them."
 (global-fci-mode t)
 
 (when (fboundp 'windmove-default-keybindings)
-      (windmove-default-keybindings))
-
-;;;; Emacs jabber support
-;;;; adjust this path:
-;;;(add-to-list 'load-path "/path/to/emacs-jabber")
-;;;; For 0.7.1 and below:
-;;(require 'jabber)
-;;;; For 0.7.90 and above:
-;;(require 'jabber-autoloads)
-;;
-;;;; Jabber / Google Talk Setup
-;;(setq jabber-username "kevin.demarco" ;; notice: leave off the @gmail.com
-;;      jabber-server "gmail.com"     ;; this is a part of your user ID, not a part of the server you will connect to.
-;;      jabber-network-server "talk.google.com"  ;; this is the actual server to connect to
-;;      jabber-port 5223
-;;      jabber-connection-type 'ssl)
-
+  (windmove-default-keybindings))
 
 ;; Matlab-emacs setup
 (add-to-list 'load-path "~/.emacs.d/site-lisp/matlab-emacs")
@@ -322,11 +272,30 @@ If the new path's directories does not exist, create them."
 ;; 4.) Command should automatically set to: 
 ;;             emacsclient -a emacs --no-wait +%l %f
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Disable the .ido.last question on exit
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(LaTeX-command "latex -synctex=1")
+ '(TeX-command-list (quote (("XeLaTeX_SyncteX" "%`xelatex --synctex=1%(mode)%' %t" TeX-run-TeX nil (latex-mode doctex-mode) :help "Run XeLaTeX") ("TeX" "%(PDF)%(tex) %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil (plain-tex-mode texinfo-mode ams-tex-mode) :help "Run plain TeX") ("LaTeX" "%`%l%(mode)%' %t" TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX") ("Makeinfo" "makeinfo %t" TeX-run-compile nil (texinfo-mode) :help "Run Makeinfo with Info output") ("Makeinfo HTML" "makeinfo --html %t" TeX-run-compile nil (texinfo-mode) :help "Run Makeinfo with HTML output") ("AmSTeX" "%(PDF)amstex %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil (ams-tex-mode) :help "Run AMSTeX") ("ConTeXt" "texexec --once --texutil %(execopts)%t" TeX-run-TeX nil (context-mode) :help "Run ConTeXt once") ("ConTeXt Full" "texexec %(execopts)%t" TeX-run-TeX nil (context-mode) :help "Run ConTeXt until completion") ("BibTeX" "bibtex %s" TeX-run-BibTeX nil t :help "Run BibTeX") ("View" "%V" TeX-run-discard-or-function nil t :help "Run Viewer") ("Print" "%p" TeX-run-command t t :help "Print the file") ("Queue" "%q" TeX-run-background nil t :help "View the printer queue" :visible TeX-queue-command) ("File" "%(o?)dvips %d -o %f " TeX-run-command t t :help "Generate PostScript file") ("Index" "makeindex %s" TeX-run-command nil t :help "Create index file") ("Check" "lacheck %s" TeX-run-compile nil (latex-mode) :help "Check LaTeX file for correctness") ("Spell" "(TeX-ispell-document \"\")" TeX-run-function nil t :help "Spell-check the document") ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files") ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files") ("Other" "" TeX-run-command t t :help "Run an arbitrary command") ("Jump to PDF" "%V" TeX-run-discard-or-function nil t :help "Run Viewer"))))
+ '(TeX-modes (quote (tex-mode plain-tex-mode texinfo-mode latex-mode doctex-mode)))
+ '(column-number-mode t)
+ '(ido-enable-last-directory-history nil)
+ '(ido-max-work-directory-list 0)
+ '(ido-max-work-file-list 0)
+ '(ido-record-commands nil))
+
+                                        ;(latex-preview-pane-enable)
+
+(setq-default TeX-master nil) ; Query for master file.
+                                        ;(setq-default TeX-master "master") ; All master files called "master".
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Standard emacs config (http://emacswiki.org/emacs/AUCTeX)
-(setq TeX-auto-save t)
 (setq TeX-parse-self t)
+(setq TeX-auto-save t)
 (setq-default TeX-master nil)
 
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
@@ -365,7 +334,7 @@ If the new path's directories does not exist, create them."
 (defun latex-word-count ()
   (interactive)
   (shell-command (concat "/usr/bin/texcount "
-                         ; "uncomment then options go here "
+                         "uncomment then options go here "
                          (buffer-file-name))))
 
 
@@ -380,10 +349,10 @@ If the new path's directories does not exist, create them."
 
 (setq org-tag-alist '(("idea" . ?i) ("leadlaser" . ?l) ("blooky" . ?b) ("art" . ?a)))
 
-;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org"))
-;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*"))
-;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org")
-;                       (file-expand-wildcards "~/Dropbox/org/calendars/*.org"))
+                                        ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org"))
+                                        ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*"))
+                                        ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org")
+                                        ;                       (file-expand-wildcards "~/Dropbox/org/calendars/*.org"))
 
 (setq org-agenda-files (list "~/Dropbox/org/consulting.org"
                              "~/Dropbox/org/gtri.org"
@@ -419,20 +388,20 @@ If the new path's directories does not exist, create them."
   (setq org-tst-regexp "<\\([0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} ... [0-9]\\{2\\}:[0-9]\\{2\\}[^\r\n>]*?\\)>")
   (setq org-tstr-regexp (concat org-tst-regexp "--?-?" org-tst-regexp))
   (save-excursion
-    ; get categories
+                                        ; get categories
     (setq mycategory (org-get-category))
-    ; get start and end of tree
+                                        ; get start and end of tree
     (org-back-to-heading t)
     (setq mystart    (point))
     (org-end-of-subtree)
     (setq myend      (point))
     (goto-char mystart)
-    ; search for timerange
-    ;(setq myresult (re-search-forward org-tstr-regexp myend t))
+                                        ; search for timerange
+                                        ;(setq myresult (re-search-forward org-tstr-regexp myend t))
     (setq myresult t)
-    ; search for categories to exclude
+                                        ; search for categories to exclude
     (setq mycatp (member mycategory org-export-exclude-category))
-    ; return t if ok, nil when not ok
+                                        ; return t if ok, nil when not ok
     (if (and myresult (not mycatp)) t nil)))
 
 ;;; activate filter and call export function
@@ -444,15 +413,15 @@ If the new path's directories does not exist, create them."
   (+ 1 2))
 
 (setq org-icalendar-store-UID t)
-;(setq org-icalendar-include-todo t)
+                                        ;(setq org-icalendar-include-todo t)
 (setq org-icalendar-use-scheduled '(event-if-not-todo todo-due))
 (setq org-icalendar-use-deadline '(event-if-not-todo todo-due))
 
 ;; Debug / test functions
 (defun doodlebug ()
- "Nonce function"
- (interactive)
- (message "Howdie-doodie fella"))
+  "Nonce function"
+  (interactive)
+  (message "Howdie-doodie fella"))
 
 (add-to-list 'auto-mode-alist '("\\.launch\\'" . nxml-mode))
 (add-to-list 'auto-mode-alist '("\\.world\\'" . nxml-mode))
@@ -463,10 +432,12 @@ If the new path's directories does not exist, create them."
 
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c-mode))
 
-;; Journal
-(load "journal")
-(if (file-directory-p "~/Dropbox/org/journal/")
-    (setq-default journal-dir "~/Dropbox/org/journal/"))
+;;;; Journal
+;;(load "journal")
+;;(if (file-directory-p "~/Dropbox/org/journal/")
+;;    (setq-default journal-dir "~/Dropbox/org/journal/"))
+
+(setq org-journal-dir "~/Dropbox/org/journal/")
 
 (global-set-key [f5] 'recompile)
 
@@ -490,52 +461,12 @@ If the new path's directories does not exist, create them."
 (add-to-list 'default-frame-alist '(width . 100))
 
 (defun kill-other-buffers ()
-    "Kill all other buffers."
-    (interactive)
-    (mapc 'kill-buffer 
-          (delq (current-buffer) 
-                (remove-if-not 'buffer-file-name (buffer-list)))))
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer 
+        (delq (current-buffer) 
+              (remove-if-not 'buffer-file-name (buffer-list)))))
 
-;(custom-set-faces
-; ;; custom-set-faces was added by Custom.
-; ;; If you edit it by hand, you could mess it up, so be careful.
-; ;; Your init file should contain only one such instance.
-; ;; If there is more than one, they won't work right.
-; '(default ((t (:family "Courier New" :foundry "monotype" :slant normal :weight normal :height 151 :width normal)))))
-
-;;; Auto-complete
-;;(add-to-list 'load-path (concat myoptdir "AC"))
-;(load-file "~/.emacs.d/site-lisp/auto-complete-clang.el")
-;(require 'auto-complete-config)
-;;(add-to-list 'ac-dictionary-directories (concat myoptdir "AC/ac-dict"))
-;(add-to-list 'ac-dictionary-directories "/home/syllogismrxs/repos/3rd-party/auto-complete/dict")
-;a
-;(require 'auto-complete-clang)
-
-;; (setq ac-auto-start nil)
-;; (setq ac-quick-help-delay 0.5)
-;; ;; (ac-set-trigger-key "TAB")
-;; ;; (define-key ac-mode-map  [(control tab)] 'auto-complete)
-;; (define-key ac-mode-map  [(control tab)] 'auto-complete)
-;; (defun my-ac-config ()
-;;   (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
-;;   (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
-;;   ;; (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-;;   (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
-;;   (add-hook 'css-mode-hook 'ac-css-mode-setup)
-;;   (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-;;   (global-auto-complete-mode t))
-;; (defun my-ac-cc-mode-setup ()
-;;   (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
-;; (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
-;; ;; ac-source-gtags
-;; (my-ac-config)
-;; 
-;; ;; cmake-ide
-;; (load-file "~/.emacs.d/site-lisp/cmake-ide.el")
-;; (setq cmake-ide-dir "/home/syllogismrxs/repos/opencv-workbench")
-;; (require 'rtags) ;; optional, must have rtags installed
-;; (cmake-ide-setup)
 
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
@@ -545,88 +476,78 @@ If the new path's directories does not exist, create them."
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
 
-;(add-hook 'c++-mode-hook 'irony-mode)
-;(add-hook 'c-mode-hook 'irony-mode)
-;(add-hook 'objc-mode-hook 'irony-mode)
-
-;;; replace the `completion-at-point' and `complete-symbol' bindings in
-;;; irony-mode's buffers by irony-mode's function
-;(defun my-irony-mode-hook ()
-;  (define-key irony-mode-map [remap completion-at-point]
-;    'irony-completion-at-point-async)
-;  (define-key irony-mode-map [remap complete-symbol]
-;    'irony-completion-at-point-async))
-;(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
 (setq tramp-default-method "ssh")
 
-; ;; scroll one line at a time (less "jumpy" than defaults)    
-; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time    
-; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-; (setq scroll-step 1) ;; keyboard scroll one line at a time
-; (setq scroll-conservatively 10000)
+                                        ; ;; scroll one line at a time (less "jumpy" than defaults)    
+                                        ; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time    
+                                        ; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+                                        ; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+                                        ; (setq scroll-step 1) ;; keyboard scroll one line at a time
+                                        ; (setq scroll-conservatively 10000)
 
-;(add-to-list 'company-backends 'company-c-headers)
+                                        ;(add-to-list 'company-backends 'company-c-headers)
 
-;(add-hook 'after-init-hook #'global-flycheck-mode)
+                                        ;(add-hook 'after-init-hook #'global-flycheck-mode)
 (require 'flymake)
 (setq cppcm-write-flymake-makefile nil)
 
 (add-hook 'after-init-hook 'global-company-mode)
-;(require 'global-company-mode)
+                                        ;(require 'global-company-mode)
 (eval-after-load 'company
-    '(push 'company-c-headers company-backends))
-;(add-to-list 'company-backends 'company-c-headers)
+  '(push 'company-c-headers company-backends))
 
-;(defun complete-or-indent ()
-;  (interactive)
-;  (if (company-manual-begin)
-;      (company-complete-common)
-;    (indent-according-to-mode)))
-;
-;
-; (defun indent-or-complete ()
-;    (interactive)
-;    (if (looking-at "\\_>")
-;        (company-complete-common)
-;      (indent-according-to-mode)))
-;
-;(global-set-key [tab] 'indent-or-complete)
 
-;(global-set-key "\t" 'company-complete-common)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (if (derived-mode-p 'c-mode 'c++-mode)
+                (cppcm-reload-all)
+              )))
+;; OPTIONAL, somebody reported that they can use this package with Fortran
+(add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
+;; OPTIONAL, avoid typing full path when starting gdb
+(global-set-key (kbd "C-c C-g")
+                '(lambda ()(interactive) (gud-gdb (concat "gdb --fullname " (cppcm-get-exe-path-current-buffer)))))
+;; OPTIONAL, some users need specify extra flags forwarded to compiler
+(setq cppcm-extra-preprocss-flags-from-user '("-I/usr/src/linux/include" "-DNDEBUG"))
 
-;(local-set-key (kbd "TAB") 'complete-or-indent) 
-;(global-set-key "C-o" 'company-complete-common)
-;(setq company-idle-delay 0.0)
+;; Scroll to first error in compilation output
+(setq compilation-scroll-output 'first-error)
 
- (add-hook 'c-mode-common-hook
-           (lambda ()
-             (if (derived-mode-p 'c-mode 'c++-mode)
-                 (cppcm-reload-all)
-               )))
- ;; OPTIONAL, somebody reported that they can use this package with Fortran
- (add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
- ;; OPTIONAL, avoid typing full path when starting gdb
- (global-set-key (kbd "C-c C-g")
-  '(lambda ()(interactive) (gud-gdb (concat "gdb --fullname " (cppcm-get-exe-path-current-buffer)))))
- ;; OPTIONAL, some users need specify extra flags forwarded to compiler
- (setq cppcm-extra-preprocss-flags-from-user '("-I/usr/src/linux/include" "-DNDEBUG"))
- 
- ;; Scroll to first error in compilation output
- (setq compilation-scroll-output 'first-error)
- 
- ;; Helper for compilation. Close the compilation window if there was no error
- ;; at all.
- (defun compilation-exit-autoclose (status code msg)
-   ;; If M-x compile exists with a 0
-   (when (and (eq status 'exit) (zerop code))
-     ;; then bury the *compilation* buffer, so that C-x b doesn't go there
-     (bury-buffer)
-     ;; and delete the *compilation* window
-     (delete-window (get-buffer-window (get-buffer "*compilation*"))))
-   ;; Always return the anticipated result of compilation-exit-message-function
-   (cons msg code))
- ;; Specify my function (maybe I should have done a lambda function)
- (setq compilation-exit-message-function 'compilation-exit-autoclose)
+;; Helper for compilation. Close the compilation window if there was no error
+;; at all.
+(defun compilation-exit-autoclose (status code msg)
+  ;; If M-x compile exists with a 0
+  (when (and (eq status 'exit) (zerop code))
+    ;; then bury the *compilation* buffer, so that C-x b doesn't go there
+    (bury-buffer)
+    ;; and delete the *compilation* window
+    (delete-window (get-buffer-window (get-buffer "*compilation*"))))   
+  ;; Always return the anticipated result of compilation-exit-message-function
+  (cons msg code))
+;; Specify my function (maybe I should have done a lambda function)
+(setq compilation-exit-message-function 'compilation-exit-autoclose)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Copy from emacs to other programs:
+; http://emacs.stackexchange.com/questions/1051/copy-region-from-emacs-without-newlines
+(defun my-copy-simple (&optional beg end)
+  "Save the current region (or line) to the `kill-ring' after stripping extra whitespace and new lines"
+  (interactive
+   (if (region-active-p)
+       (list (region-beginning) (region-end))
+     (list (line-beginning-position) (line-end-position))))
+  (let ((my-text (buffer-substring-no-properties beg end)))
+    (with-temp-buffer 
+      (insert my-text)
+      (goto-char 1)
+      (while (looking-at "[ \t\n]")
+        (delete-char 1))
+      (let ((fill-column 9333999))
+        (fill-region (point-min) (point-max)))
+      (kill-region (point-min) (point-max)))))
+
+
+(setq yas-snippet-dirs
+      '("~/repos/linux-setup/emacs/snippets"        
+        ))      
+(yas-global-mode 1)
