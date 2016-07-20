@@ -224,9 +224,6 @@ If the new path's directories does not exist, create them."
 
 (setq make-backup-file-name-function 'my-backup-file-name)
 
-(setq c-default-style "k&r")
-
-
 ;; setup for template package
 
 (setq user-mail-address "kevin.demarco@gmail.com")
@@ -245,7 +242,13 @@ If the new path's directories does not exist, create them."
 (setq time-stamp-pattern nil)
 
                                         ; Use spaces instead of tabs
-(setq-default indent-tabs-mode nil)
+;(setq-default indent-tabs-mode nil)
+
+(setq c-default-style "k&r")
+
+(setq-default c-basic-offset 4
+              tab-width 4
+              indent-tabs-mode nil)
 
 (setq-default fill-column 79)
 (require 'fill-column-indicator)
