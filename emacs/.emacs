@@ -350,18 +350,11 @@ If the new path's directories does not exist, create them."
 
 (setq org-log-done 'time)
 
-(setq org-tag-alist '(("idea" . ?i) ("leadlaser" . ?l) ("blooky" . ?b) ("art" . ?a)))
+(setq org-tag-alist '(("idea" . ?i) ("leadlaser" . ?l) ("art" . ?a)))
 
-                                        ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org"))
-                                        ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*"))
-                                        ;(setq org-agenda-files (file-expand-wildcards "~/Dropbox/org/*.org")
-                                        ;                       (file-expand-wildcards "~/Dropbox/org/calendars/*.org"))
-
-(setq org-agenda-files (list "~/Dropbox/org/consulting.org"
-                             "~/Dropbox/org/gtri.org"
+(setq org-agenda-files (list "~/Dropbox/org/gtri.org"
                              "~/Dropbox/org/personal.org" 
-                             "~/Dropbox/org/thesis.org"
-                             "~/Dropbox/org/blooky.org"
+                             "~/Dropbox/org/thesis.org"                             
                              ))
 
 ;; Set to the location of your Org files on your local system
@@ -434,11 +427,6 @@ If the new path's directories does not exist, create them."
 
 
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c-mode))
-
-;;;; Journal
-;;(load "journal")
-;;(if (file-directory-p "~/Dropbox/org/journal/")
-;;    (setq-default journal-dir "~/Dropbox/org/journal/"))
 
 (setq org-journal-dir "~/Dropbox/org/journal/")
 
